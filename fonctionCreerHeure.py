@@ -1,9 +1,11 @@
 from datetime import datetime, timedelta
 import time
+import os
 import sys
 
 def fonction_alarme(tuple_heure):
     if tuple_heure[0] == 12:
+        os.system('clear')
         sys.stdout.write(" C'est Midi !")
         sys.stdout.flush()
 
@@ -18,7 +20,7 @@ def horloge_creee():
                     return h  # On sort de la boucle et on renvoie la valeur
                 else:
                     print("Mauvaise entrée (doit être entre 0 et 23), réessayez.")
-            except ValueError:
+            except:
                 print("Erreur : Veuillez entrer un nombre entier.")
 
     def minutes():
@@ -29,7 +31,7 @@ def horloge_creee():
                     return m
                 else:
                     print("Mauvaise entrée (0-59), réessayez.")
-            except ValueError:
+            except:
                 print("Erreur : Veuillez entrer un nombre entier.")
 
     def secondes():
@@ -40,7 +42,7 @@ def horloge_creee():
                     return s
                 else:
                     print("Mauvaise entrée (0-59), réessayez.")
-            except ValueError:
+            except:
                 print("Erreur : Veuillez entrer un nombre entier.")
 
 
@@ -62,6 +64,7 @@ def horloge_creee():
         
         # CREATION DU TUPLE ET AFFICHAGE :
         tuple_heure = (heure_virtuelle.hour, heure_virtuelle.minute, heure_virtuelle.second)
+        os.system('clear')
         sys.stdout.write(f"\rHeure : {tuple_heure[0]:02}:{tuple_heure[1]:02}:{tuple_heure[2]:02}")
         sys.stdout.flush()
         time.sleep(1)
