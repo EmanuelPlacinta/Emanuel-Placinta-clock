@@ -3,11 +3,25 @@ import time
 import os
 import sys
 
-def fonction_alarme(tuple_heure):
-    if tuple_heure[0] == 12:
-        os.system('clear')
-        sys.stdout.write(" C'est Midi !")
-        sys.stdout.flush()
+def check_alarm(tuple_heure, alarm_settings):
+    # (ton code actuel reste identique ici)
+    return tuple_heure == alarm_settings
+
+def regler_alarme():
+    print("\n=== RÉGLAGE DE L'ALARME ===")
+    while True:
+        try:
+            user_h = int(input("Heure de l'alarme (0-23) : "))
+            user_m = int(input("Minutes de l'alarme (0-59) : "))
+            user_s = int(input("Secondes de l'alarme (0-59) : "))
+            
+            # On vérifie la validité avant de renvoyer
+            if 0 <= user_h <= 23 and 0 <= user_m <= 59 and 0 <= user_s <= 59:
+                return (user_h, user_m, user_s) # On sort et on donne le tuple
+            else:
+                print("Valeurs hors limites, réessayez.")
+        except ValueError:
+            print("Veuillez entrer des nombres entiers.")
 
 def horloge_creee():
     print("Configuration horloge :")
@@ -55,8 +69,6 @@ def horloge_creee():
     heure_souhaitee = maintenant.replace(hour=h_val, minute=m_val, second=s_val, microsecond=0)
     decalage = heure_souhaitee - maintenant
 
-
-
     # AFFICHAGE DE L'HEURE EN DIRECT :
     while True:
          # On applique le décalage à l'heure système actuelle
@@ -68,6 +80,6 @@ def horloge_creee():
         sys.stdout.write(f"\rHeure : {tuple_heure[0]:02}:{tuple_heure[1]:02}:{tuple_heure[2]:02}")
         sys.stdout.flush()
         time.sleep(1)
-        fonction_alarme(tuple_heure)
+        # fonction_alarme(tuple_heure)
 
 horloge_creee()
