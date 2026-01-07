@@ -90,6 +90,31 @@ def afficher_heure(tuple_heure, format24h):
     # Accès menu via KeyboardInterrupt
     print("***** Appuyez sur Ctrl+C pour accéder au menu *****")
 
+def afficher_heure_fixe(tuple_heure, format24h):
+    if  format24h:
+        heure_texte = f"{tuple_heure[0]:02}:{tuple_heure[1]:02}:{tuple_heure[2]:02}"
+    
+    else:
+        if tuple_heure[0]>=12:
+            suffixe="PM"
+        else:
+            suffixe="AM"
+
+    # Prise en compte du fait que OOH n'xiste pas dans le mode AM/PM
+        h_12=tuple_heure[0]%12
+        if h_12==0:
+            h_12=12
+
+        heure_texte = f"{h_12:02}:{tuple_heure[1]:02}:{tuple_heure[2]:02} {suffixe}"
+
+    # Mise au format pour s'adapter à Pyfliget avec variable contenant la mise en forme pyfiglet :
+    heure_geante = pyfiglet.figlet_format(heure_texte, font='script')
+    
+    # Nettoyage écran pour la lisibilité
+    os.system('clear')
+    
+    # Affichage de l'heure
+    print(heure_geante)
 
 
 def horloge_creee():
@@ -143,9 +168,10 @@ def horloge_creee():
                 print("1. Régler l'heure")
                 print("2. Régler l'alarme")
                 print("3. Annuler alarme")
-                print("4. Reprendre")
+                print("4. Quitter le menu et Reprendre")
                 print("5. Changer de mode d'affichage (24h ou AM/PM)")
-                print("6. Quitter l'horloge")
+                print("6. Mettre l'horloge en pause")
+                print("7. Quitter l'horloge")
                 
                 choix = input("Votre choix : ")
 
@@ -184,8 +210,14 @@ def horloge_creee():
                     os.system('clear')
                     print("***** Format d'affichage mis à jour *****")
                     time.sleep(2)
+                
+                elif choix ==  "6":
+                    decalage_force=datetime.now()+decalage
+                    heure_fixe=(decalage_force.hour, decalage_force.minute, decalage_force.second)
+                    afficher_heure_fixe(heure_fixe, format24h)
+                    print(input("Appuyez sur Entrée pour reprendre "))
 
-                elif choix == "6":
+                elif choix == "7":
                     # On quitte proprement le programme
                     aurevoir_texte=("Au revoir !")
                     aurevoir_geant = pyfiglet.figlet_format(aurevoir_texte, font='letter')
