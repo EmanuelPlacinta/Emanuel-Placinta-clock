@@ -3,7 +3,6 @@ import time
 import os
 import sys
 import pyfiglet
-# from playsound3 import playsound
 def check_alarm(time_tuple, alarm_settings):
     # Vérification de l'alarme par rapport au temps qui passe
     return time_tuple == alarm_settings
