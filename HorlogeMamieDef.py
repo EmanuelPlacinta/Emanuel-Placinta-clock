@@ -172,7 +172,8 @@ def horloge_creee():
                 print("4. Quitter le menu et Reprendre")
                 print("5. Changer de mode d'affichage (24h ou AM/PM)")
                 print("6. Mettre l'horloge en pause")
-                print("7. Quitter l'horloge")
+                print("7. Geler l'horloge")
+                print("8. Quitter l'horloge")
                 
                 choix = input("Votre choix : ")
 
@@ -219,11 +220,22 @@ def horloge_creee():
                     print(input("Appuyez sur Entrée pour reprendre "))
 
                 elif choix == "7":
+                    debut_pause=datetime.now()
+                    temps_arrete=debut_pause+decalage
+                    temps_arrete_tuple=(temps_arrete.hour, temps_arrete.minute, temps_arrete.second)
+                    afficher_heure_fixe(temps_arrete_tuple, format24h)
+                    print(input("Appuyez sur Entrée pour reprendre "))
+                    fin_pause=datetime.now()
+
+                    longueur_pause=fin_pause-debut_pause
+                    decalage=decalage-longueur_pause
+
+                elif choix == "8":
                     # On quitte proprement le programme
-                    aurevoir_texte=("Au revoir !")
-                    aurevoir_geant = pyfiglet.figlet_format(aurevoir_texte, font='letter')
+                    au_revoir=("Au revoir !")
+                    giant_bye = pyfiglet.figlet_format(au_revoir, font='letter')
                     os.system('clear')
-                    print(aurevoir_geant)
+                    print(giant_bye)
                     time.sleep(2)
                     os.system('clear')
                     sys.exit()

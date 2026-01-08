@@ -170,8 +170,9 @@ def run_clock():
                 print("3. Annuler alarme")
                 print("4. Quitter le menu et Reprendre")
                 print("5. Changer de mode d'affichage (24h ou AM/PM)")
-                print("6. Mettre l'horloge en pause")
-                print("7. Quitter l'horloge")
+                print("6. Mettre l'horloge affichée en pause")
+                print("7. Geler l'horloge")
+                print("8. Quitter l'horloge")
                 
                 choice = input("Votre choix : ")
 
@@ -218,6 +219,17 @@ def run_clock():
                     print(input("Appuyez sur Entrée pour reprendre "))
 
                 elif choice == "7":
+                    debut_pause=datetime.now()
+                    time_stopped=debut_pause+offset
+                    time_stopped_tuple=(time_stopped.hour, time_stopped.minute, time_stopped.second)
+                    display_fixed_time(time_stopped_tuple, is_24h)
+                    print(input("Appuyez sur Entrée pour reprendre "))
+                    end_pause=datetime.now()
+
+                    lenght_pause=end_pause-debut_pause
+                    offset=offset-lenght_pause
+
+                elif choice == "8":
                     # On quitte proprement le programme
                     bye_text=("Au revoir !")
                     giant_bye = pyfiglet.figlet_format(bye_text, font='letter')
