@@ -59,4 +59,4 @@ pip install pyfiglet
 Ce projet a été réalisé avec succès par :
 * **Mayeul Rouberty**
 * **Michel Rostain**
-* **Emanuel Placinta-Ioan**
+* **Placinta Emanuel-Ioan**
