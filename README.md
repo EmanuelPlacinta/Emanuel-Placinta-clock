@@ -28,6 +28,13 @@ Ce projet utilise `pyfiglet` pour générer les polices de caractères ASCII :
 pip install pyfiglet
 ```
 
+
+---
+
+### 3. Technologies
+* **Langage : Python 3.x**
+* **Bibliothèques : datetime, time, os, sys, pyfiglet**
+
 ---
 
 ### Guide d'utilisation
