@@ -20,11 +20,16 @@ Une horloge interactive et élégante développée en Python pour le terminal. C
 ### 1. Prérequis
 Assurez-vous d'avoir Python 3 installé sur votre machine.
 
+---
+
 ### 2. Installation de la dépendance
 Ce projet utilise `pyfiglet` pour générer les polices de caractères ASCII :
 ```bash
 pip install pyfiglet
 ```
+
+---
+
 ### Guide d'utilisation
 1. Initialisation : Au lancement, choisissez votre format (1 ou 2) puis réglez l'heure de départ.
 2. Accès au Menu : Pendant que l'horloge tourne, appuyez sur Ctrl + C pour ouvrir les options.
@@ -40,6 +45,8 @@ pip install pyfiglet
 * **6 : Mettre l'horloge en pause (appui sur Entrée pour reprendre)**
 
 * **7 : Quitter proprement le programme avec un message d'adieu**
+
+---
 
 ### Réalisation
 Ce projet a été réalisé avec succès par :
