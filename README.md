@@ -1,4 +1,4 @@
-#  Terminal Retro Clock
+#  L’horloge de mamie
 
 Une horloge interactive et élégante développée en Python pour le terminal. Ce projet simule une horloge temps réel avec un affichage en ASCII Art, incluant une gestion d'alarme et une personnalisation complète des formats horaires.
 
@@ -25,6 +25,21 @@ Ce projet utilise `pyfiglet` pour générer les polices de caractères ASCII :
 ```bash
 pip install pyfiglet
 ```
+### Guide d'utilisation
+1. Initialisation : Au lancement, choisissez votre format (1 ou 2) puis réglez l'heure de départ.
+2. Accès au Menu : Pendant que l'horloge tourne, appuyez sur Ctrl + C pour ouvrir les options.
+3. Options disponibles :
+* **1 : Redéfinir l'heure actuelle**
+
+* **2 : Configurer une nouvelle alarme**
+
+* **3 : Annuler l'alarme active**
+
+* **5 : Alterner entre le format 24h et AM/PM**
+
+* **6 : Mettre l'horloge en pause (appui sur Entrée pour reprendre)**
+
+* **7 : Quitter proprement le programme avec un message d'adieu**
 
 ### Réalisation
 Ce projet a été réalisé avec succès par :
