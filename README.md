@@ -1,4 +1,4 @@
-# 🕒 Terminal Retro Clock
+#  Terminal Retro Clock
 
 Une horloge interactive et élégante développée en Python pour le terminal. Ce projet simule une horloge temps réel avec un affichage en ASCII Art, incluant une gestion d'alarme et une personnalisation complète des formats horaires.
 
@@ -26,4 +26,8 @@ Ce projet utilise `pyfiglet` pour générer les polices de caractères ASCII :
 pip install pyfiglet
 ```
 
-###  Guide d'utilisation
+### Réalisation
+Ce projet a été réalisé avec succès par :
+* **Mayeul Rouberty**
+* **Michel Rostain**
+* **Emanuel Placinta-Ioan**
