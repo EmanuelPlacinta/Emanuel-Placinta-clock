@@ -88,35 +88,6 @@ def afficher_heure(tuple_heure, format24h):
     # Affichage de l'heure
     print(heure_geante)
     # Accès menu via KeyboardInterrupt
-    print("***** Appuyez sur Ctrl+C pour accéder au menu *****")
-
-def afficher_heure_fixe(tuple_heure, format24h):
-    if  format24h:
-        heure_texte = f"{tuple_heure[0]:02}:{tuple_heure[1]:02}:{tuple_heure[2]:02}"
-    
-    else:
-        if tuple_heure[0]>=12:
-            suffixe="PM"
-        else:
-            suffixe="AM"
-        # Le reste du modulo permet aux heures de ne rester qu'entre 1 et 12
-        h_12=tuple_heure[0]%12
-
-        # Prise en compte du fait que OOH n'xiste pas dans le mode AM/PM, quand le %12 renvoie 0
-        if h_12==0:
-            h_12=12
-
-        heure_texte = f"{h_12:02}:{tuple_heure[1]:02}:{tuple_heure[2]:02} {suffixe}"
-
-    # Mise au format pour s'adapter à Pyfliget avec variable contenant la mise en forme pyfiglet :
-    heure_geante = pyfiglet.figlet_format(heure_texte, font='script')
-    
-    # Nettoyage écran pour la lisibilité
-    os.system('clear')
-    
-    # Affichage de l'heure
-    print(heure_geante)
-
 
 def horloge_creee():
     # Définition des variables alarme et format24h
@@ -149,7 +120,7 @@ def horloge_creee():
                     tuple_heure = (heure_virtuelle.hour, heure_virtuelle.minute, heure_virtuelle.second)
 
                     afficher_heure(tuple_heure, format24h)
-                    
+                    print("***** Appuyez sur Ctrl+C pour accéder au menu *****")
                     # On vérifie l'alarme seulement si elle existe
                     if alarme is not None and check_alarm(tuple_heure, alarme):
                         alarme_texte=("C'est l'heure")
@@ -217,7 +188,7 @@ def horloge_creee():
                 elif choix ==  "6":
                     decalage_force=datetime.now()+decalage
                     heure_fixe=(decalage_force.hour, decalage_force.minute, decalage_force.second)
-                    afficher_heure_fixe(heure_fixe, format24h)
+                    afficher_heure(heure_fixe, format24h)
                     print(input("Appuyez sur Entrée pour reprendre "))
 
                 elif choix == "7":
@@ -227,7 +198,7 @@ def horloge_creee():
                     temps_arrete=debut_pause+decalage
                     # On transforme en tuple pour l'affichage
                     temps_arrete_tuple=(temps_arrete.hour, temps_arrete.minute, temps_arrete.second)
-                    afficher_heure_fixe(temps_arrete_tuple, format24h)
+                    afficher_heure(temps_arrete_tuple, format24h)
                     print(input("Appuyez sur Entrée pour reprendre "))
                     fin_pause=datetime.now()
 

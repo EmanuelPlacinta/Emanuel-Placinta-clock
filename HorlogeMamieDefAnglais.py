@@ -87,36 +87,6 @@ def display_time(time_tuple, is_24h):
     # Affichage de l'heure
     print(giant_time)
     # Accès menu via KeyboardInterrupt
-    print("***** Appuyez sur Ctrl+C pour accéder au menu *****")
-
-def display_fixed_time(time_tuple, is_24h):
-    if  is_24h:
-        time_text = f"{time_tuple[0]:02}:{time_tuple[1]:02}:{time_tuple[2]:02}"
-    
-    else:
-        if time_tuple[0]>=12:
-            suffix="PM"
-        else:
-            suffix="AM"
-
-        # Le reste du modulo permet aux heures de ne rester qu'entre 1 et 12
-        h_12=time_tuple[0]%12
-        
-        # Prise en compte du fait que OOH n'xiste pas dans le mode AM/PM, quand le %12 renvoie 0
-        if h_12==0:
-            h_12=12
-
-        time_text = f"{h_12:02}:{time_tuple[1]:02}:{time_tuple[2]:02} {suffix}"
-
-    # Mise au format pour s'adapter à Pyfliget avec variable contenant la mise en forme pyfiglet :
-    giant_time = pyfiglet.figlet_format(time_text, font='script')
-    
-    # Nettoyage écran pour la lisibilité
-    os.system('clear')
-    
-    # Affichage de l'heure
-    print(giant_time)
-
 
 def run_clock():
     # Définition des variables alarm et is_24h
@@ -149,7 +119,7 @@ def run_clock():
                     time_tuple = (virtual_time.hour, virtual_time.minute, virtual_time.second)
 
                     display_time(time_tuple, is_24h)
-                    
+                    print("***** Appuyez sur Ctrl+C pour accéder au menu *****")
                     # On vérifie l'alarme seulement si elle existe
                     if alarm is not None and check_alarm(time_tuple, alarm):
                         alarm_text=("C'est l'heure")
@@ -217,7 +187,7 @@ def run_clock():
                 elif choice ==  "6":
                     forced_offset=datetime.now()+offset
                     fixed_time=(forced_offset.hour, forced_offset.minute, forced_offset.second)
-                    display_fixed_time(fixed_time, is_24h)
+                    display_time(fixed_time, is_24h)
                     print(input("Appuyez sur Entrée pour reprendre "))
 
                 elif choice == "7":
@@ -227,7 +197,7 @@ def run_clock():
                     time_stopped=debut_pause+offset
                     # On transforme en tuple pour l'affichage
                     time_stopped_tuple=(time_stopped.hour, time_stopped.minute, time_stopped.second)
-                    display_fixed_time(time_stopped_tuple, is_24h)
+                    display_time(time_stopped_tuple, is_24h)
                     print(input("Appuyez sur Entrée pour reprendre "))
                     end_pause=datetime.now()
 
