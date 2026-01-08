@@ -99,8 +99,10 @@ def display_fixed_time(time_tuple, is_24h):
         else:
             suffix="AM"
 
-    # Prise en compte du fait que OOH n'xiste pas dans le mode AM/PM
+        # Le reste du modulo permet aux heures de ne rester qu'entre 1 et 12
         h_12=time_tuple[0]%12
+        
+        # Prise en compte du fait que OOH n'xiste pas dans le mode AM/PM, quand le %12 renvoie 0
         if h_12==0:
             h_12=12
 
@@ -136,7 +138,7 @@ def run_clock():
     now = datetime.now()
     target_time = now.replace(hour=h_val, minute=m_val, second=s_val, microsecond=0)
 
-    # Création de la variablme de offset, le coeur du calcul de l'heure utilisateur
+    # Création de la variable de décalage (offset), le coeur du calcul de l'heure utilisateur
     offset = target_time - now
     
     # Boucle de fonctionnement du programme
@@ -219,8 +221,11 @@ def run_clock():
                     print(input("Appuyez sur Entrée pour reprendre "))
 
                 elif choice == "7":
+                    # Pour le calcul de la pause (pas affiché)
                     debut_pause=datetime.now()
+                    # Pour le temps affiché (du coup on inclu le décalage)
                     time_stopped=debut_pause+offset
+                    # On transforme en tuple pour l'affichage
                     time_stopped_tuple=(time_stopped.hour, time_stopped.minute, time_stopped.second)
                     display_fixed_time(time_stopped_tuple, is_24h)
                     print(input("Appuyez sur Entrée pour reprendre "))
