@@ -120,6 +120,7 @@ def run_clock():
 
                     display_time(time_tuple, is_24h)
                     print("***** Appuyez sur Ctrl+C pour accéder au menu *****")
+                    
                     # On vérifie l'alarme seulement si elle existe
                     if alarm is not None and check_alarm(time_tuple, alarm):
                         alarm_text=("C'est l'heure")

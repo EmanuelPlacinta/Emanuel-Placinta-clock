@@ -121,6 +121,7 @@ def horloge_creee():
 
                     afficher_heure(tuple_heure, format24h)
                     print("***** Appuyez sur Ctrl+C pour accéder au menu *****")
+                    
                     # On vérifie l'alarme seulement si elle existe
                     if alarme is not None and check_alarm(tuple_heure, alarme):
                         alarme_texte=("C'est l'heure")
