@@ -1,61 +1,29 @@
-# L’horloge de mamie
-Une horloge interactive en ligne de commande développée en Python. Ce projet permet d'afficher l'heure en temps réel avec un style artistique ASCII, de gérer des alarmes et de basculer entre les formats d'affichage 24h et AM/PM.
+# 🕒 Terminal Retro Clock
 
+Une horloge interactive et élégante développée en Python pour le terminal. Ce projet simule une horloge temps réel avec un affichage en ASCII Art, incluant une gestion d'alarme et une personnalisation complète des formats horaires.
 
- Fonctionnalités
-Affichage ASCII Art : Utilise la bibliothèque pyfiglet pour un rendu visuel élégant dans le terminal.
+---
 
-Format Personnalisable : Basculez instantanément entre le format 24 heures et le format 12 heures (AM/PM).
+##  Fonctionnalités
 
-Système d'Alarme : Programmez une alarme qui vous avertit visuellement lorsqu'elle se déclenche.
+* **Affichage ASCII Art** : Rendu visuel "old-school" utilisant la bibliothèque `pyfiglet`.
+* **Double Format Horaire** : Basculez facilement entre le mode **24 heures** et le mode **12 heures (AM/PM)**.
+* **Système d'Alarme** : Programmez une alarme avec une notification visuelle à l'écran.
+* **Gestion Dynamique** : Réglage manuel de l'heure avec calcul automatique de l'écart (offset) par rapport à l'heure système.
+* **Menu de Contrôle** : Accès à tout moment aux paramètres via l'interruption clavier `Ctrl+C`.
+* **Mode Pause** : Possibilité de figer l'heure affichée à l'écran.
 
-Gestion du Temps Réel : Possibilité de régler manuellement l'heure de l'horloge (avec calcul d'offset automatique).
+---
 
-Menu Interactif : Accédez à tout moment aux réglages via un raccourci clavier (Ctrl+C).
+##  Installation & Lancement
 
-Mode Pause : Gelez l'affichage de l'heure pour une lecture fixe.
+### 1. Prérequis
+Assurez-vous d'avoir Python 3 installé sur votre machine.
 
+### 2. Installation de la dépendance
+Ce projet utilise `pyfiglet` pour générer les polices de caractères ASCII :
+```bash
+pip install pyfiglet
+```
 
-Installation
-Prérequis :
-Python 3.x installé sur votre système.
-
-La bibliothèque pyfiglet
-
-
-Utilisation
-Au lancement, l'application vous guidera pour configurer l'affichage initial :
-
-Choisir le format (1 pour AM/PM, 2 pour 24h).
-
-Régler l'heure actuelle.
-
-L'horloge démarre !
-
-
-Structure du Code
-Le script est organisé de manière modulaire :
-
-set_time() / set_alarm() : Fonctions de saisie utilisateur avec gestion d'erreurs.
-
-display_time() : Gère le rendu visuel et la conversion des formats.
-
-run_clock() : La boucle principale gérant la logique temporelle et les interruptions menu.
-
-
-Technologies Utilisées
-Langage : Python 3
-
-Bibliothèques standards : datetime, time, os, sys
-
-Bibliothèque tierce : pyfiglet (pour le rendu des polices ASCII)
-
-
-Réalisation
-Ce projet a été conçu et développé par :
-
-Mayeul Rouberty
-
-Michel Rostain
-
-Emanuel Placinta-Ioan
+###  Guide d'utilisation
