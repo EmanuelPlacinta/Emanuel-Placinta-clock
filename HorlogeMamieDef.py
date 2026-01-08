@@ -152,12 +152,13 @@ def horloge_creee():
                     # On vérifie l'alarme seulement si elle existe
                     if alarme is not None and check_alarm(tuple_heure, alarme):
                         alarme_texte=("C'est l'heure")
+                        os.system('paplay La_foule.mp3 &')
                         texte_geant = pyfiglet.figlet_format(alarme_texte, font='block')
                         os.system('clear')
 
                         print(texte_geant)
                         print(input("***** Appuyez sur entrée pour  continuer *****"))
-
+                        os.system('killall paplay')
 
                     time.sleep(1)
 

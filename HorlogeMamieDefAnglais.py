@@ -3,7 +3,7 @@ import time
 import os
 import sys
 import pyfiglet
-
+# from playsound3 import playsound
 def check_alarm(time_tuple, alarm_settings):
     # Vérification de l'alarme par rapport au temps qui passe
     return time_tuple == alarm_settings
@@ -152,12 +152,13 @@ def run_clock():
                     # On vérifie l'alarme seulement si elle existe
                     if alarm is not None and check_alarm(time_tuple, alarm):
                         alarm_text=("C'est l'heure")
+                        os.system('paplay La_foule.mp3 &')
                         giant_text = pyfiglet.figlet_format(alarm_text, font='block')
                         os.system('clear')
 
                         print(giant_text)
                         print(input("***** Appuyez sur entrée pour  continuer *****"))
-
+                        os.system('killall paplay')
 
                     time.sleep(1)
 
