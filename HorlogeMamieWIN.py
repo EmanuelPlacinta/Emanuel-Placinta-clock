@@ -17,22 +17,29 @@ def clear_screen():
         os.system('clear')
 
 def play_alarm():
-    """Déclenche le son de l'alarme selon l'OS."""
+    """Déclenche le son de l'alarme de manière stable sur Windows."""
     if platform.system() == "Windows":
-        try:
-            # Tente de jouer le fichier WAV en boucle et en arrière-plan
-            winsound.PlaySound("La_foule.wav", winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
-        except:
-            # Si le fichier est introuvable, utilise un BIP système
-            print("Fichier audio non trouvé, bip de secours...")
-            winsound.Beep(1000, 2000) 
+        file_path = "La_foule.wav"
+        if os.path.exists(file_path):
+            try:
+                # SND_FILENAME : charge le fichier
+                # SND_ASYNC : joue en arrière-plan (ne bloque pas le reste du code)
+                # SND_LOOP : recommence la musique tant qu'on ne l'arrête pas
+                winsound.PlaySound(file_path, winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
+            except Exception as e:
+                print(f"Erreur lecture : {e}")
+                winsound.Beep(1000, 2000)
+        else:
+            print(f"\n[!] Fichier {file_path} introuvable dans le dossier.")
+            winsound.Beep(1000, 2000)
     else:
         # Commande pour Linux
         os.system('paplay La_foule.mp3 &')
 
 def stop_alarm():
-    """Arrête le son de l'alarme."""
+    """Arrête proprement le son de l'alarme."""
     if platform.system() == "Windows":
+        # Passer None arrête tout son en cours lancé par PlaySound
         winsound.PlaySound(None, winsound.SND_PURGE)
     else:
         os.system('killall paplay')
@@ -142,7 +149,7 @@ def run_clock():
                     
                     input("\n>>> ALARME ACTIVE ! Appuyez sur ENTREE pour arrêter <<<")
                     stop_alarm()
-                    alarm = None # Désactivation après déclenchement
+                    alarm = None 
 
                 time.sleep(1)
 
