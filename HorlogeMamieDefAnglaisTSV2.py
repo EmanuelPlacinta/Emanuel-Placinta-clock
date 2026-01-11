@@ -4,8 +4,11 @@ import os
 import sys
 import pyfiglet
 import platform
-import winsound
-
+try:
+    import winsound
+except ImportError:
+    winsound = None
+    
 # La variable SYSTEM est une constante, signalée par le fait qu'elle est écrite en majuscule en début de code
 SYSTEM=platform.system()
 
